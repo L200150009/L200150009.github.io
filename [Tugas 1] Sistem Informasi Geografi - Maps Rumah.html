@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 500px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h1><center>Tugas 1 Sistem Informasi Geografi</center></h1>
+    <h3><center>Rindhitya Arfiananda / L200150009</center></h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var rumah = {lat: -7.541195, lng: 110.620141};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: rumah
+        });
+        var marker = new google.maps.Marker({
+          position: rumah,
+          map: map,
+          title: "Rindhitya's Home"
+        });
+      }
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAaCdyxSRQFrfL4HvgJ4IOnlupfPoSTcys&callback=initMap">
+    </script>
+  </body>
+</html>
