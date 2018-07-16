@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Custom Street View Panoramas</title>
+    <meta charset="utf-8">
+    <style>
+      /* ukuran map */
+      #map {
+        height: 100%;
+      }
+      /* css buat html & body */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      function initPano(){
+        // ngambil map dr google
+        var panorama = new google.maps.StreetViewPanorama(
+          document.getElementById('map'), {
+            pano: 'mendungan',
+            visible: true,
+            panoProvider: getCustomPanorama
+        });
+      }
+      // ngasih gambar pano ke map
+      function getCustomPanoramaTileUrl(pano, zoom, tileX, tileY) {
+        return 'https://raw.githubusercontent.com/L200150009/L200150009.github.io/master/StreetViewPanorama.jpg';
+      }
+      function getCustomPanorama(pano, zoom, tileX, tileY) {
+        if (pano === 'mendungan') {
+          return {
+            location: {
+              pano: 'mendungan',
+              description: 'Jalan Mendungan Baru'
+            },
+            links: [],
+            copyright: 'Imagery (c) 2018 Google',
+            tiles: {
+              tileSize: new google.maps.Size(1024, 180),
+              worldSize: new google.maps.Size(1024, 512),
+              centerHeading: 105,
+              getTileUrl: getCustomPanoramaTileUrl
+            }
+          };
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOkOBjjqk8fJTovOd2dIwxRD5ZFIzHW5o&callback=initPano">
+    </script>
+
+  </body>
+</html>
